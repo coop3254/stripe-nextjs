@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { checkout } from '../checkout'
 
 const Home: NextPage = () => {
   return (
@@ -17,21 +18,38 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">NFTs!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <Image src="/images/sneaker1.jpeg" width={400} height={400} /> 
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <div>
+            <Image 
+              src="/images/sneaker1.jpeg"
+              alt="Sneaker NFT" 
+              width={400} 
+              height={400} 
+            /> 
+            <p>RTFKT x Nike Dunk Genesis</p>
+            <button onClick={(() => {
+                checkout({
+                  lineItems: [
+                    {
+                      price: "price_1Lqn23EmDvfq4Vd0bTCwjPVT",
+                      quantity: 1
+                    }
+                  ]
+                })
+            })}>
+              BUY!
+            </button>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <Image src="/images/jacket.png" width={400} height={400} />
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>      
+          <div>
+            <Image 
+              src="/images/jacket.png" 
+              alt="Jacket NFT"
+              width={400} 
+              height={400} 
+            />
+            <p>Alien Space Puffa</p>
+          </div>      
         </div>
       </main>
 
